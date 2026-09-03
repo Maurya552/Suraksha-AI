@@ -37,20 +37,17 @@ function updateDashboard() {
 
 
     if (transactionElement) {
-        transactionElement.textContent =
-            transactionsChecked;
+        transactionElement.textContent = transactionsChecked;
     }
 
 
     if (suspiciousElement) {
-        suspiciousElement.textContent =
-            suspiciousDetected;
+        suspiciousElement.textContent = suspiciousDetected;
     }
 
 
     if (blockedElement) {
-        blockedElement.textContent =
-            threatsBlocked;
+        blockedElement.textContent = threatsBlocked;
     }
 
 }
@@ -61,20 +58,19 @@ function updateDashboard() {
    PROTECTION PROFILE SELECTOR
    ===================================================== */
 
-function selectProtectionProfile(profile) {
+function selectProfile(profile) {
 
     const result =
-        document.getElementById("profileInfo");
+        document.getElementById("profileResult");
 
 
     if (!result) {
 
         console.error(
-            "Step 11A error: profileInfo element not found."
+            "Step 11A error: profileResult element not found."
         );
 
         return;
-
     }
 
 
@@ -123,7 +119,7 @@ function selectProtectionProfile(profile) {
        FIRST-TIME DIGITAL BANKER
        ================================================= */
 
-    else if (profile === "firstTime") {
+    else if (profile === "firsttime") {
 
         result.innerHTML = `
 
@@ -192,65 +188,42 @@ function selectProtectionProfile(profile) {
     }
 
 
-    /* Highlight selected button */
+    /* =================================================
+       HIGHLIGHT SELECTED BUTTON
+       ================================================= */
 
-    const profileButtons =
-        document.querySelectorAll(
-            ".profile-button"
+    document
+        .querySelectorAll(".profile-button")
+        .forEach(button => {
+
+            button.classList.remove("selected");
+
+        });
+
+
+    const selectedButton =
+        document.querySelector(
+            `.profile-button[data-profile="${profile}"]`
         );
 
 
-    profileButtons.forEach(
-        button => {
+    if (selectedButton) {
 
-            button.classList.remove(
-                "selected"
-            );
-
-        }
-    );
-
-
-    if (profile === "senior") {
-
-        const button =
-            document.querySelector(
-                '[onclick*="selectProtectionProfile(\'senior\')"]'
-            );
-
-        if (button) {
-            button.classList.add("selected");
-        }
+        selectedButton.classList.add("selected");
 
     }
 
-
-    else if (profile === "firstTime") {
-
-        const button =
-            document.querySelector(
-                '[onclick*="selectProtectionProfile(\'firstTime\')"]'
-            );
-
-        if (button) {
-            button.classList.add("selected");
-        }
-
-    }
+}
 
 
-    else {
+/* =====================================================
+   COMPATIBILITY FUNCTION
+   Supports older HTML versions
+   ===================================================== */
 
-        const button =
-            document.querySelector(
-                '[onclick*="selectProtectionProfile(\'standard\')"]'
-            );
+function selectProtectionProfile(profile) {
 
-        if (button) {
-            button.classList.add("selected");
-        }
-
-    }
+    selectProfile(profile);
 
 }
 
@@ -278,6 +251,7 @@ function showTransaction() {
 
         </p>
 
+
         <div class="form-container">
 
             <label>
@@ -291,14 +265,20 @@ function showTransaction() {
                 min="0"
             >
 
+
             <label>
                 Is this a new beneficiary?
             </label>
 
             <select id="newBeneficiary">
 
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
+                <option value="no">
+                    No
+                </option>
+
+                <option value="yes">
+                    Yes
+                </option>
 
             </select>
 
@@ -309,8 +289,13 @@ function showTransaction() {
 
             <select id="newDevice">
 
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
+                <option value="no">
+                    No
+                </option>
+
+                <option value="yes">
+                    Yes
+                </option>
 
             </select>
 
@@ -321,8 +306,13 @@ function showTransaction() {
 
             <select id="unusualLocation">
 
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
+                <option value="no">
+                    No
+                </option>
+
+                <option value="yes">
+                    Yes
+                </option>
 
             </select>
 
@@ -334,8 +324,13 @@ function showTransaction() {
 
             <select id="urgency">
 
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
+                <option value="no">
+                    No
+                </option>
+
+                <option value="yes">
+                    Yes
+                </option>
 
             </select>
 
@@ -347,19 +342,28 @@ function showTransaction() {
 
             <select id="firstTransfer">
 
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
+                <option value="no">
+                    No
+                </option>
+
+                <option value="yes">
+                    Yes
+                </option>
 
             </select>
 
 
-            <button onclick="checkTransaction()">
+            <button
+                type="button"
+                onclick="checkTransaction()"
+            >
 
                 🔍 Analyze Transaction
 
             </button>
 
         </div>
+
 
         <div id="transactionResult"></div>
 
@@ -388,14 +392,18 @@ function checkTransaction() {
     const newBeneficiary =
         document.getElementById("newBeneficiary").value;
 
+
     const newDevice =
         document.getElementById("newDevice").value;
+
 
     const unusualLocation =
         document.getElementById("unusualLocation").value;
 
+
     const urgency =
         document.getElementById("urgency").value;
+
 
     const firstTransfer =
         document.getElementById("firstTransfer").value;
@@ -409,6 +417,8 @@ function checkTransaction() {
     transactionsChecked++;
 
 
+    /* Large transaction */
+
     if (amount >= 25000) {
 
         score += 20;
@@ -419,6 +429,8 @@ function checkTransaction() {
 
     }
 
+
+    /* New beneficiary */
 
     if (newBeneficiary === "yes") {
 
@@ -431,6 +443,8 @@ function checkTransaction() {
     }
 
 
+    /* New device */
+
     if (newDevice === "yes") {
 
         score += 15;
@@ -441,6 +455,8 @@ function checkTransaction() {
 
     }
 
+
+    /* Unusual location */
 
     if (unusualLocation === "yes") {
 
@@ -453,6 +469,8 @@ function checkTransaction() {
     }
 
 
+    /* Pressure / urgency */
+
     if (urgency === "yes") {
 
         score += 20;
@@ -463,6 +481,8 @@ function checkTransaction() {
 
     }
 
+
+    /* First transfer */
 
     if (firstTransfer === "yes") {
 
@@ -476,7 +496,7 @@ function checkTransaction() {
 
 
     /* =================================================
-       PROFILE-BASED PROTECTION
+       PROFILE-BASED EXTRA PROTECTION
        ================================================= */
 
     if (
@@ -514,6 +534,8 @@ function checkTransaction() {
         Math.min(score, 100);
 
 
+    /* Dashboard */
+
     if (score >= 31) {
         suspiciousDetected++;
     }
@@ -533,6 +555,8 @@ function checkTransaction() {
     let explanation;
     let recommendation;
 
+
+    /* HIGH RISK */
 
     if (score >= 61) {
 
@@ -557,6 +581,8 @@ function checkTransaction() {
     }
 
 
+    /* MEDIUM RISK */
+
     else if (score >= 31) {
 
         level = "MEDIUM RISK";
@@ -577,6 +603,8 @@ function checkTransaction() {
 
     }
 
+
+    /* LOW RISK */
 
     else {
 
@@ -632,6 +660,7 @@ function checkTransaction() {
                 ${explanation}
             </p>
 
+
             ${
                 reasons.length > 0
                 ?
@@ -658,6 +687,7 @@ function checkTransaction() {
                 ""
             }
 
+
             <div class="safety-box">
 
                 <strong>
@@ -676,11 +706,17 @@ function checkTransaction() {
                 ?
                 `
 
-                <button onclick="stopTransaction()">
+                <button
+                    type="button"
+                    onclick="stopTransaction()"
+                >
                     🛑 Stop Transaction
                 </button>
 
-                <button onclick="contactTrustedPerson()">
+                <button
+                    type="button"
+                    onclick="contactTrustedPerson()"
+                >
                     👨‍👩‍👧 Contact Trusted Person
                 </button>
 
@@ -752,6 +788,7 @@ function showScamChecker() {
             📩 Check a Suspicious Message
         </h2>
 
+
         <p class="checker-intro">
 
             Paste an SMS, WhatsApp message or email below.
@@ -768,6 +805,7 @@ function showScamChecker() {
                 Suspicious message
             </label>
 
+
             <textarea
                 id="scamMessage"
                 rows="7"
@@ -775,7 +813,10 @@ function showScamChecker() {
             ></textarea>
 
 
-            <button onclick="checkScamMessage()">
+            <button
+                type="button"
+                onclick="checkScamMessage()"
+            >
                 🔍 Analyze Message
             </button>
 
@@ -806,6 +847,8 @@ function checkScamMessage() {
             .value
             .toLowerCase();
 
+
+    /* Empty message */
 
     if (!message.trim()) {
 
@@ -859,6 +902,7 @@ function checkScamMessage() {
             reason: "Urgency or pressure"
         },
 
+
         {
             words: [
                 "blocked",
@@ -870,6 +914,7 @@ function checkScamMessage() {
             reason: "Account threat"
         },
 
+
         {
             words: [
                 "otp",
@@ -878,6 +923,7 @@ function checkScamMessage() {
             points: 25,
             reason: "OTP request"
         },
+
 
         {
             words: [
@@ -888,6 +934,7 @@ function checkScamMessage() {
             points: 25,
             reason: "Request for sensitive information"
         },
+
 
         {
             words: [
@@ -900,6 +947,7 @@ function checkScamMessage() {
             reason: "Suspicious verification link"
         },
 
+
         {
             words: [
                 "prize",
@@ -911,6 +959,7 @@ function checkScamMessage() {
             reason: "Unexpected reward or refund"
         },
 
+
         {
             words: [
                 "kyc"
@@ -918,6 +967,7 @@ function checkScamMessage() {
             points: 15,
             reason: "KYC-related request"
         },
+
 
         {
             words: [
@@ -957,7 +1007,9 @@ function checkScamMessage() {
     );
 
 
-    /* Profile protection */
+    /* =================================================
+       PROFILE-BASED MESSAGE PROTECTION
+       ================================================= */
 
     if (
         selectedProtectionProfile === "senior" &&
@@ -1011,6 +1063,8 @@ function checkScamMessage() {
     let recommendation;
 
 
+    /* HIGH RISK */
+
     if (score >= 61) {
 
         level = "HIGH RISK";
@@ -1033,6 +1087,8 @@ function checkScamMessage() {
     }
 
 
+    /* MEDIUM RISK */
+
     else if (score >= 31) {
 
         level = "SUSPICIOUS";
@@ -1052,6 +1108,8 @@ function checkScamMessage() {
 
     }
 
+
+    /* LOW RISK */
 
     else {
 
@@ -1214,12 +1272,9 @@ document.addEventListener(
 
         updateDashboard();
 
-        /*
-         * Set Standard Protection as the
-         * initial selected profile.
-         */
+        /* Set Standard Protection initially */
 
-        selectProtectionProfile("standard");
+        selectProfile("standard");
 
     }
 );
