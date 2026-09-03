@@ -14,14 +14,14 @@ let threatsBlocked = 1;
 
 
 /* =====================================================
-   STEP 11A - SELECTED PROTECTION PROFILE
+   SELECTED PROTECTION PROFILE
    ===================================================== */
 
 let selectedProtectionProfile = "standard";
 
 
 /* =====================================================
-   UPDATE DASHBOARD NUMBERS
+   UPDATE DASHBOARD
    ===================================================== */
 
 function updateDashboard() {
@@ -40,16 +40,13 @@ function updateDashboard() {
         transactionElement.textContent = transactionsChecked;
     }
 
-
     if (suspiciousElement) {
         suspiciousElement.textContent = suspiciousDetected;
     }
 
-
     if (blockedElement) {
         blockedElement.textContent = threatsBlocked;
     }
-
 }
 
 
@@ -58,16 +55,20 @@ function updateDashboard() {
    PROTECTION PROFILE SELECTOR
    ===================================================== */
 
-function selectProfile(profile) {
+function selectProtectionProfile(profile) {
+
+    console.log("Selected profile:", profile);
 
     const result =
-        document.getElementById("profileResult");
+        document.getElementById("profileInfo");
 
+
+    /* Check that profile box exists */
 
     if (!result) {
 
         console.error(
-            "Step 11A error: profileResult element not found."
+            "ERROR: profileInfo element was not found."
         );
 
         return;
@@ -77,6 +78,21 @@ function selectProfile(profile) {
     /* Save selected profile */
 
     selectedProtectionProfile = profile;
+
+
+    /* Get all profile buttons */
+
+    const buttons =
+        document.querySelectorAll(".profile-button");
+
+
+    /* Remove selected class */
+
+    buttons.forEach(function(button) {
+
+        button.classList.remove("selected");
+
+    });
 
 
     /* =================================================
@@ -112,6 +128,21 @@ function selectProfile(profile) {
 
         `;
 
+
+        /* Highlight first button */
+
+        if (buttons[0]) {
+            buttons[0].classList.add("selected");
+        }
+
+
+        /* Add activity */
+
+        addActivity(
+            "👴 Senior Citizen Protection enabled",
+            "Extra protection and simpler safety guidance are active."
+        );
+
     }
 
 
@@ -119,7 +150,7 @@ function selectProfile(profile) {
        FIRST-TIME DIGITAL BANKER
        ================================================= */
 
-    else if (profile === "firsttime") {
+    else if (profile === "firstTime") {
 
         result.innerHTML = `
 
@@ -148,6 +179,21 @@ function selectProfile(profile) {
 
         `;
 
+
+        /* Highlight second button */
+
+        if (buttons[1]) {
+            buttons[1].classList.add("selected");
+        }
+
+
+        /* Add activity */
+
+        addActivity(
+            "📱 First-Time Digital Banker Protection enabled",
+            "Extra guidance is active for unfamiliar digital banking activity."
+        );
+
     }
 
 
@@ -158,6 +204,7 @@ function selectProfile(profile) {
     else {
 
         selectedProtectionProfile = "standard";
+
 
         result.innerHTML = `
 
@@ -179,37 +226,27 @@ function selectProfile(profile) {
 
                 🛡️ <strong>Safety Tip:</strong>
 
-                Never share your OTP, PIN, password or CVV.
+                Never share your OTP, PIN,
+                password or CVV.
 
             </div>
 
         `;
 
-    }
+
+        /* Highlight third button */
+
+        if (buttons[2]) {
+            buttons[2].classList.add("selected");
+        }
 
 
-    /* =================================================
-       HIGHLIGHT SELECTED BUTTON
-       ================================================= */
+        /* Add activity */
 
-    document
-        .querySelectorAll(".profile-button")
-        .forEach(button => {
-
-            button.classList.remove("selected");
-
-        });
-
-
-    const selectedButton =
-        document.querySelector(
-            `.profile-button[data-profile="${profile}"]`
+        addActivity(
+            "👤 Standard Protection enabled",
+            "General financial safety monitoring is active."
         );
-
-
-    if (selectedButton) {
-
-        selectedButton.classList.add("selected");
 
     }
 
@@ -217,13 +254,49 @@ function selectProfile(profile) {
 
 
 /* =====================================================
-   COMPATIBILITY FUNCTION
-   Supports older HTML versions
+   RECENT ACTIVITY
    ===================================================== */
 
-function selectProtectionProfile(profile) {
+function addActivity(title, description) {
 
-    selectProfile(profile);
+    const activityList =
+        document.getElementById("activityList");
+
+
+    if (!activityList) {
+        return;
+    }
+
+
+    const activity =
+        document.createElement("div");
+
+
+    activity.className = "activity-item";
+
+
+    activity.innerHTML = `
+
+        <span class="activity-icon">
+            🛡️
+        </span>
+
+        <div>
+
+            <strong>
+                ${title}
+            </strong>
+
+            <p>
+                ${description}
+            </p>
+
+        </div>
+
+    `;
+
+
+    activityList.prepend(activity);
 
 }
 
@@ -236,6 +309,11 @@ function showTransaction() {
 
     const checker =
         document.getElementById("checker");
+
+
+    if (!checker) {
+        return;
+    }
 
 
     checker.innerHTML = `
@@ -357,9 +435,7 @@ function showTransaction() {
                 type="button"
                 onclick="checkTransaction()"
             >
-
                 🔍 Analyze Transaction
-
             </button>
 
         </div>
@@ -469,7 +545,7 @@ function checkTransaction() {
     }
 
 
-    /* Pressure / urgency */
+    /* Pressure */
 
     if (urgency === "yes") {
 
@@ -496,7 +572,7 @@ function checkTransaction() {
 
 
     /* =================================================
-       PROFILE-BASED EXTRA PROTECTION
+       PROFILE-BASED PROTECTION
        ================================================= */
 
     if (
@@ -533,8 +609,6 @@ function checkTransaction() {
     score =
         Math.min(score, 100);
 
-
-    /* Dashboard */
 
     if (score >= 31) {
         suspiciousDetected++;
@@ -627,9 +701,7 @@ function checkTransaction() {
 
 
     const result =
-        document.getElementById(
-            "transactionResult"
-        );
+        document.getElementById("transactionResult");
 
 
     result.innerHTML = `
@@ -713,6 +785,7 @@ function checkTransaction() {
                     🛑 Stop Transaction
                 </button>
 
+
                 <button
                     type="button"
                     onclick="contactTrustedPerson()"
@@ -728,6 +801,12 @@ function checkTransaction() {
         </div>
 
     `;
+
+
+    addActivity(
+        "💳 Transaction analyzed",
+        "Suraksha AI assigned a " + level + " risk score of " + score + "/100."
+    );
 
 }
 
@@ -780,6 +859,11 @@ function showScamChecker() {
 
     const checker =
         document.getElementById("checker");
+
+
+    if (!checker) {
+        return;
+    }
 
 
     checker.innerHTML = `
@@ -848,8 +932,6 @@ function checkScamMessage() {
             .toLowerCase();
 
 
-    /* Empty message */
-
     if (!message.trim()) {
 
         document.getElementById(
@@ -877,7 +959,6 @@ function checkScamMessage() {
         `;
 
         return;
-
     }
 
 
@@ -983,28 +1064,27 @@ function checkScamMessage() {
     ];
 
 
-    patterns.forEach(
-        pattern => {
+    patterns.forEach(function(pattern) {
 
-            const found =
-                pattern.words.some(
-                    word =>
-                        message.includes(word)
-                );
+        const found =
+            pattern.words.some(function(word) {
+
+                return message.includes(word);
+
+            });
 
 
-            if (found) {
+        if (found) {
 
-                score += pattern.points;
+            score += pattern.points;
 
-                reasons.push(
-                    pattern.reason
-                );
-
-            }
+            reasons.push(
+                pattern.reason
+            );
 
         }
-    );
+
+    });
 
 
     /* =================================================
@@ -1218,6 +1298,12 @@ function checkScamMessage() {
 
     `;
 
+
+    addActivity(
+        "📩 Suspicious message analyzed",
+        "Suraksha AI assigned a " + level + " risk score of " + score + "/100."
+    );
+
 }
 
 
@@ -1268,13 +1354,13 @@ function enableSafeMode() {
 
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
+    function() {
 
         updateDashboard();
 
         /* Set Standard Protection initially */
 
-        selectProfile("standard");
+        selectProtectionProfile("standard");
 
     }
 );
