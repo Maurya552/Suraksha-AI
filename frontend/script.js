@@ -37,26 +37,20 @@ function updateDashboard() {
 
 
     if (transactionElement) {
-
         transactionElement.textContent =
             transactionsChecked;
-
     }
 
 
     if (suspiciousElement) {
-
         suspiciousElement.textContent =
             suspiciousDetected;
-
     }
 
 
     if (blockedElement) {
-
         blockedElement.textContent =
             threatsBlocked;
-
     }
 
 }
@@ -64,7 +58,7 @@ function updateDashboard() {
 
 /* =====================================================
    STEP 11A
-   VULNERABLE USER PROTECTION PROFILE
+   PROTECTION PROFILE SELECTOR
    ===================================================== */
 
 function selectProtectionProfile(profile) {
@@ -74,7 +68,13 @@ function selectProtectionProfile(profile) {
 
 
     if (!result) {
+
+        console.error(
+            "Step 11A error: profileInfo element not found."
+        );
+
         return;
+
     }
 
 
@@ -161,6 +161,8 @@ function selectProtectionProfile(profile) {
 
     else {
 
+        selectedProtectionProfile = "standard";
+
         result.innerHTML = `
 
             <div class="profile-info-icon">
@@ -189,6 +191,67 @@ function selectProtectionProfile(profile) {
 
     }
 
+
+    /* Highlight selected button */
+
+    const profileButtons =
+        document.querySelectorAll(
+            ".profile-button"
+        );
+
+
+    profileButtons.forEach(
+        button => {
+
+            button.classList.remove(
+                "selected"
+            );
+
+        }
+    );
+
+
+    if (profile === "senior") {
+
+        const button =
+            document.querySelector(
+                '[onclick*="selectProtectionProfile(\'senior\')"]'
+            );
+
+        if (button) {
+            button.classList.add("selected");
+        }
+
+    }
+
+
+    else if (profile === "firstTime") {
+
+        const button =
+            document.querySelector(
+                '[onclick*="selectProtectionProfile(\'firstTime\')"]'
+            );
+
+        if (button) {
+            button.classList.add("selected");
+        }
+
+    }
+
+
+    else {
+
+        const button =
+            document.querySelector(
+                '[onclick*="selectProtectionProfile(\'standard\')"]'
+            );
+
+        if (button) {
+            button.classList.add("selected");
+        }
+
+    }
+
 }
 
 
@@ -208,7 +271,6 @@ function showTransaction() {
             💳 Check a Transaction
         </h2>
 
-
         <p class="checker-intro">
 
             Answer a few simple questions. Suraksha AI will
@@ -216,14 +278,11 @@ function showTransaction() {
 
         </p>
 
-
         <div class="form-container">
-
 
             <label>
                 Transaction Amount (₹)
             </label>
-
 
             <input
                 type="number"
@@ -232,21 +291,14 @@ function showTransaction() {
                 min="0"
             >
 
-
             <label>
                 Is this a new beneficiary?
             </label>
 
-
             <select id="newBeneficiary">
 
-                <option value="no">
-                    No
-                </option>
-
-                <option value="yes">
-                    Yes
-                </option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
 
             </select>
 
@@ -255,16 +307,10 @@ function showTransaction() {
                 Are you using a new device?
             </label>
 
-
             <select id="newDevice">
 
-                <option value="no">
-                    No
-                </option>
-
-                <option value="yes">
-                    Yes
-                </option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
 
             </select>
 
@@ -273,16 +319,10 @@ function showTransaction() {
                 Is the location unusual?
             </label>
 
-
             <select id="unusualLocation">
 
-                <option value="no">
-                    No
-                </option>
-
-                <option value="yes">
-                    Yes
-                </option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
 
             </select>
 
@@ -292,16 +332,10 @@ function showTransaction() {
                 to transfer money?
             </label>
 
-
             <select id="urgency">
 
-                <option value="no">
-                    No
-                </option>
-
-                <option value="yes">
-                    Yes
-                </option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
 
             </select>
 
@@ -311,16 +345,10 @@ function showTransaction() {
                 with this person?
             </label>
 
-
             <select id="firstTransfer">
 
-                <option value="no">
-                    No
-                </option>
-
-                <option value="yes">
-                    Yes
-                </option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
 
             </select>
 
@@ -331,9 +359,7 @@ function showTransaction() {
 
             </button>
 
-
         </div>
-
 
         <div id="transactionResult"></div>
 
@@ -360,33 +386,19 @@ function checkTransaction() {
 
 
     const newBeneficiary =
-        document.getElementById(
-            "newBeneficiary"
-        ).value;
-
+        document.getElementById("newBeneficiary").value;
 
     const newDevice =
-        document.getElementById(
-            "newDevice"
-        ).value;
-
+        document.getElementById("newDevice").value;
 
     const unusualLocation =
-        document.getElementById(
-            "unusualLocation"
-        ).value;
-
+        document.getElementById("unusualLocation").value;
 
     const urgency =
-        document.getElementById(
-            "urgency"
-        ).value;
-
+        document.getElementById("urgency").value;
 
     const firstTransfer =
-        document.getElementById(
-            "firstTransfer"
-        ).value;
+        document.getElementById("firstTransfer").value;
 
 
     let score = 0;
@@ -394,12 +406,8 @@ function checkTransaction() {
     let reasons = [];
 
 
-    /* Count transaction analysis */
-
     transactionsChecked++;
 
-
-    /* Large transaction */
 
     if (amount >= 25000) {
 
@@ -412,8 +420,6 @@ function checkTransaction() {
     }
 
 
-    /* New beneficiary */
-
     if (newBeneficiary === "yes") {
 
         score += 20;
@@ -424,8 +430,6 @@ function checkTransaction() {
 
     }
 
-
-    /* New device */
 
     if (newDevice === "yes") {
 
@@ -438,8 +442,6 @@ function checkTransaction() {
     }
 
 
-    /* Unusual location */
-
     if (unusualLocation === "yes") {
 
         score += 15;
@@ -451,8 +453,6 @@ function checkTransaction() {
     }
 
 
-    /* Social engineering / pressure */
-
     if (urgency === "yes") {
 
         score += 20;
@@ -463,8 +463,6 @@ function checkTransaction() {
 
     }
 
-
-    /* First-time transfer */
 
     if (firstTransfer === "yes") {
 
@@ -478,7 +476,7 @@ function checkTransaction() {
 
 
     /* =================================================
-       PROFILE-BASED EXTRA PROTECTION
+       PROFILE-BASED PROTECTION
        ================================================= */
 
     if (
@@ -512,25 +510,17 @@ function checkTransaction() {
     }
 
 
-    /* Maximum score */
-
     score =
         Math.min(score, 100);
 
 
-    /* Update dashboard */
-
     if (score >= 31) {
-
         suspiciousDetected++;
-
     }
 
 
     if (score >= 61) {
-
         threatsBlocked++;
-
     }
 
 
@@ -538,17 +528,11 @@ function checkTransaction() {
 
 
     let level;
-
     let icon;
-
     let message;
-
     let explanation;
-
     let recommendation;
 
-
-    /* HIGH RISK */
 
     if (score >= 61) {
 
@@ -556,17 +540,14 @@ function checkTransaction() {
 
         icon = "🚨";
 
-
         message =
             "Stop and verify this transaction before sending money.";
-
 
         explanation =
             "Multiple unusual signals were detected. " +
             "The combination of a large or unfamiliar transaction, " +
             "new access conditions, or social pressure can indicate " +
             "fraud or social engineering.";
-
 
         recommendation =
             "Do not transfer the money yet. Verify the recipient " +
@@ -576,24 +557,19 @@ function checkTransaction() {
     }
 
 
-    /* MEDIUM RISK */
-
     else if (score >= 31) {
 
         level = "MEDIUM RISK";
 
         icon = "⚠️";
 
-
         message =
             "Please verify the recipient and transaction details.";
-
 
         explanation =
             "Some unusual characteristics were detected. " +
             "This does not automatically mean the transaction is " +
             "fraudulent, but additional verification is recommended.";
-
 
         recommendation =
             "Confirm the recipient's identity and review the " +
@@ -602,23 +578,18 @@ function checkTransaction() {
     }
 
 
-    /* LOW RISK */
-
     else {
 
         level = "LOW RISK";
 
         icon = "✅";
 
-
         message =
             "No major warning signals were detected.";
-
 
         explanation =
             "The transaction does not currently show many of " +
             "the warning signals monitored by Suraksha AI.";
-
 
         recommendation =
             "Continue only if you recognize the recipient and " +
@@ -637,48 +608,29 @@ function checkTransaction() {
 
         <div class="risk-result">
 
-
             <div class="risk-icon">
-
                 ${icon}
-
             </div>
-
 
             <h2>
-
                 ${level}
-
             </h2>
 
-
             <div class="risk-score">
-
                 Risk Score: ${score}/100
-
             </div>
 
-
             <p>
-
                 ${message}
-
             </p>
-
 
             <h3>
-
                 🤖 Why did Suraksha AI flag this?
-
             </h3>
 
-
             <p>
-
                 ${explanation}
-
             </p>
-
 
             ${
                 reasons.length > 0
@@ -686,11 +638,8 @@ function checkTransaction() {
                 `
 
                 <h3>
-
                     🔎 Warning Signals
-
                 </h3>
-
 
                 <ul>
 
@@ -709,20 +658,14 @@ function checkTransaction() {
                 ""
             }
 
-
             <div class="safety-box">
 
                 <strong>
-
                     🛡️ Recommended Action
-
                 </strong>
 
-
                 <p>
-
                     ${recommendation}
-
                 </p>
 
             </div>
@@ -733,28 +676,18 @@ function checkTransaction() {
                 ?
                 `
 
-                <button
-                    onclick="stopTransaction()"
-                >
-
+                <button onclick="stopTransaction()">
                     🛑 Stop Transaction
-
                 </button>
 
-
-                <button
-                    onclick="contactTrustedPerson()"
-                >
-
+                <button onclick="contactTrustedPerson()">
                     👨‍👩‍👧 Contact Trusted Person
-
                 </button>
 
                 `
                 :
                 ""
             }
-
 
         </div>
 
@@ -810,19 +743,14 @@ function contactTrustedPerson() {
 function showScamChecker() {
 
     const checker =
-        document.getElementById(
-            "checker"
-        );
+        document.getElementById("checker");
 
 
     checker.innerHTML = `
 
         <h2>
-
             📩 Check a Suspicious Message
-
         </h2>
-
 
         <p class="checker-intro">
 
@@ -836,13 +764,9 @@ function showScamChecker() {
 
         <div class="form-container">
 
-
             <label>
-
                 Suspicious message
-
             </label>
-
 
             <textarea
                 id="scamMessage"
@@ -851,14 +775,9 @@ function showScamChecker() {
             ></textarea>
 
 
-            <button
-                onclick="checkScamMessage()"
-            >
-
+            <button onclick="checkScamMessage()">
                 🔍 Analyze Message
-
             </button>
-
 
         </div>
 
@@ -869,9 +788,7 @@ function showScamChecker() {
 
 
     checker.scrollIntoView({
-
         behavior: "smooth"
-
     });
 
 }
@@ -885,14 +802,10 @@ function checkScamMessage() {
 
     const message =
         document
-            .getElementById(
-                "scamMessage"
-            )
+            .getElementById("scamMessage")
             .value
             .toLowerCase();
 
-
-    /* Empty message */
 
     if (!message.trim()) {
 
@@ -903,25 +816,17 @@ function checkScamMessage() {
             <div class="risk-result">
 
                 <div class="risk-icon">
-
                     ⚠️
-
                 </div>
 
-
                 <h2>
-
                     Please enter a message
-
                 </h2>
 
-
                 <p>
-
                     Paste the suspicious SMS,
                     WhatsApp message or email
                     you want to analyze.
-
                 </p>
 
             </div>
@@ -938,8 +843,6 @@ function checkScamMessage() {
     let reasons = [];
 
 
-    /* Count message analysis */
-
     transactionsChecked++;
 
 
@@ -952,13 +855,9 @@ function checkScamMessage() {
                 "now",
                 "hurry"
             ],
-
             points: 20,
-
-            reason:
-                "Urgency or pressure"
+            reason: "Urgency or pressure"
         },
-
 
         {
             words: [
@@ -967,26 +866,18 @@ function checkScamMessage() {
                 "closed",
                 "deactivated"
             ],
-
             points: 20,
-
-            reason:
-                "Account threat"
+            reason: "Account threat"
         },
-
 
         {
             words: [
                 "otp",
                 "one time password"
             ],
-
             points: 25,
-
-            reason:
-                "OTP request"
+            reason: "OTP request"
         },
-
 
         {
             words: [
@@ -994,13 +885,9 @@ function checkScamMessage() {
                 "password",
                 "cvv"
             ],
-
             points: 25,
-
-            reason:
-                "Request for sensitive information"
+            reason: "Request for sensitive information"
         },
-
 
         {
             words: [
@@ -1009,13 +896,9 @@ function checkScamMessage() {
                 "verify",
                 "open"
             ],
-
             points: 15,
-
-            reason:
-                "Suspicious verification link"
+            reason: "Suspicious verification link"
         },
-
 
         {
             words: [
@@ -1024,25 +907,17 @@ function checkScamMessage() {
                 "reward",
                 "refund"
             ],
-
             points: 15,
-
-            reason:
-                "Unexpected reward or refund"
+            reason: "Unexpected reward or refund"
         },
-
 
         {
             words: [
                 "kyc"
             ],
-
             points: 15,
-
-            reason:
-                "KYC-related request"
+            reason: "KYC-related request"
         },
-
 
         {
             words: [
@@ -1051,11 +926,8 @@ function checkScamMessage() {
                 "legal action",
                 "court"
             ],
-
             points: 20,
-
-            reason:
-                "Fear or intimidation tactic"
+            reason: "Fear or intimidation tactic"
         }
 
     ];
@@ -1073,9 +945,7 @@ function checkScamMessage() {
 
             if (found) {
 
-                score +=
-                    pattern.points;
-
+                score += pattern.points;
 
                 reasons.push(
                     pattern.reason
@@ -1087,9 +957,7 @@ function checkScamMessage() {
     );
 
 
-    /* =================================================
-       PROFILE-BASED MESSAGE PROTECTION
-       ================================================= */
+    /* Profile protection */
 
     if (
         selectedProtectionProfile === "senior" &&
@@ -1119,25 +987,17 @@ function checkScamMessage() {
     }
 
 
-    /* Maximum score */
-
     score =
         Math.min(score, 100);
 
 
-    /* Update dashboard */
-
     if (score >= 31) {
-
         suspiciousDetected++;
-
     }
 
 
     if (score >= 61) {
-
         threatsBlocked++;
-
     }
 
 
@@ -1145,17 +1005,11 @@ function checkScamMessage() {
 
 
     let level;
-
     let icon;
-
     let messageText;
-
     let explanation;
-
     let recommendation;
 
-
-    /* HIGH RISK */
 
     if (score >= 61) {
 
@@ -1163,16 +1017,13 @@ function checkScamMessage() {
 
         icon = "🚨";
 
-
         messageText =
             "This message contains multiple scam warning signs.";
-
 
         explanation =
             "The message uses patterns commonly associated " +
             "with phishing, impersonation, social engineering, " +
             "or attempts to obtain sensitive banking information.";
-
 
         recommendation =
             "Do not click links, share OTPs, PINs, passwords, " +
@@ -1182,23 +1033,18 @@ function checkScamMessage() {
     }
 
 
-    /* MEDIUM RISK */
-
     else if (score >= 31) {
 
         level = "SUSPICIOUS";
 
         icon = "⚠️";
 
-
         messageText =
             "Be careful before responding to this message.";
-
 
         explanation =
             "The message contains one or more characteristics " +
             "that may be associated with financial scams.";
-
 
         recommendation =
             "Do not share confidential information. Verify " +
@@ -1207,23 +1053,18 @@ function checkScamMessage() {
     }
 
 
-    /* LOW RISK */
-
     else {
 
         level = "LOW RISK";
 
         icon = "✅";
 
-
         messageText =
             "No major scam indicators were detected.";
-
 
         explanation =
             "The message does not currently match many " +
             "of the scam patterns monitored by Suraksha AI.";
-
 
         recommendation =
             "Continue to remain cautious and never share " +
@@ -1238,46 +1079,28 @@ function checkScamMessage() {
 
         <div class="risk-result">
 
-
             <div class="risk-icon">
-
                 ${icon}
-
             </div>
-
 
             <h2>
-
                 ${level}
-
             </h2>
 
-
             <div class="risk-score">
-
                 Risk Score: ${score}/100
-
             </div>
 
-
             <p>
-
                 ${messageText}
-
             </p>
 
-
             <h3>
-
                 🤖 AI Safety Explanation
-
             </h3>
 
-
             <p>
-
                 ${explanation}
-
             </p>
 
 
@@ -1287,11 +1110,8 @@ function checkScamMessage() {
                 `
 
                 <h3>
-
                     🔎 Warning Signs Detected
-
                 </h3>
-
 
                 <ul>
 
@@ -1313,43 +1133,28 @@ function checkScamMessage() {
 
             <div class="safety-box">
 
-
                 <strong>
-
                     🛡️ What should you do?
-
                 </strong>
 
-
                 <p>
-
                     ${recommendation}
-
                 </p>
-
 
             </div>
 
 
             <div class="safety-box">
 
-
                 <strong>
-
                     🔐 Never share:
-
                 </strong>
 
-
                 <p>
-
                     OTP • PIN • Password • CVV
-
                 </p>
 
-
             </div>
-
 
         </div>
 
@@ -1360,7 +1165,6 @@ function checkScamMessage() {
 
 /* =====================================================
    SIMPLE SAFETY MODE
-   Designed for vulnerable users
    ===================================================== */
 
 function enableSafeMode() {
@@ -1392,11 +1196,30 @@ function enableSafeMode() {
     else {
 
         alert(
-
             "🛡️ Simple Safety Mode is OFF"
-
         );
 
     }
 
 }
+
+
+/* =====================================================
+   PAGE LOAD
+   ===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        updateDashboard();
+
+        /*
+         * Set Standard Protection as the
+         * initial selected profile.
+         */
+
+        selectProtectionProfile("standard");
+
+    }
+);
