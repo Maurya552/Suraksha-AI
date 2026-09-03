@@ -438,3 +438,71 @@ footer {
     }
 
 }
+/* ========================================
+   SIMPLE SAFETY MODE
+   ======================================== */
+
+.safe-mode-button {
+    margin-top: 18px;
+    background: #172033;
+    font-size: 16px;
+    padding: 16px 24px;
+}
+
+.safe-mode-description {
+    margin-top: 8px;
+    color: #667085;
+    font-size: 13px;
+}
+
+
+/* Larger and easier-to-read interface */
+
+.safe-mode {
+    font-size: 19px;
+}
+
+.safe-mode h1 {
+    font-size: 58px;
+}
+
+.safe-mode h2 {
+    font-size: 34px;
+}
+
+.safe-mode h3 {
+    font-size: 21px;
+}
+
+.safe-mode button {
+    font-size: 18px;
+    padding: 18px 25px;
+}
+
+.safe-mode .description {
+    font-size: 21px;
+}
+
+.safe-mode .card p {
+    font-size: 18px;
+}
+
+.safe-mode .checker-intro {
+    font-size: 20px;
+}
+
+
+/* Make risk results easier to read */
+
+.safe-mode .risk-result {
+    padding: 40px;
+}
+
+.safe-mode .risk-result p,
+.safe-mode .risk-result li {
+    font-size: 19px;
+}
+
+.safe-mode .risk-icon {
+    font-size: 65px;
+}
