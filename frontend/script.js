@@ -13,7 +13,16 @@ let suspiciousDetected = 3;
 let threatsBlocked = 1;
 
 
-/* Update dashboard numbers */
+/* =====================================================
+   STEP 11A - SELECTED PROTECTION PROFILE
+   ===================================================== */
+
+let selectedProtectionProfile = "standard";
+
+
+/* =====================================================
+   UPDATE DASHBOARD NUMBERS
+   ===================================================== */
 
 function updateDashboard() {
 
@@ -47,6 +56,136 @@ function updateDashboard() {
 
         blockedElement.textContent =
             threatsBlocked;
+
+    }
+
+}
+
+
+/* =====================================================
+   STEP 11A
+   VULNERABLE USER PROTECTION PROFILE
+   ===================================================== */
+
+function selectProtectionProfile(profile) {
+
+    const result =
+        document.getElementById("profileInfo");
+
+
+    if (!result) {
+        return;
+    }
+
+
+    /* Save selected profile */
+
+    selectedProtectionProfile = profile;
+
+
+    /* =================================================
+       SENIOR CITIZEN
+       ================================================= */
+
+    if (profile === "senior") {
+
+        result.innerHTML = `
+
+            <div class="profile-info-icon">
+                👴
+            </div>
+
+            <h4>
+                Senior Citizen Protection
+            </h4>
+
+            <p>
+                Suraksha AI will provide simpler warnings,
+                clearer instructions and stronger verification
+                guidance for unfamiliar transactions.
+            </p>
+
+            <div class="profile-tip">
+
+                🛡️ <strong>Safety Tip:</strong>
+
+                Never transfer money because someone
+                is pressuring you over a phone call.
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =================================================
+       FIRST-TIME DIGITAL BANKER
+       ================================================= */
+
+    else if (profile === "firstTime") {
+
+        result.innerHTML = `
+
+            <div class="profile-info-icon">
+                📱
+            </div>
+
+            <h4>
+                First-Time Digital Banker Protection
+            </h4>
+
+            <p>
+                Suraksha AI will provide extra guidance
+                when you encounter unfamiliar recipients,
+                devices or digital banking requests.
+            </p>
+
+            <div class="profile-tip">
+
+                🛡️ <strong>Safety Tip:</strong>
+
+                Always verify a new recipient before
+                sending money.
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =================================================
+       STANDARD PROTECTION
+       ================================================= */
+
+    else {
+
+        result.innerHTML = `
+
+            <div class="profile-info-icon">
+                👤
+            </div>
+
+            <h4>
+                Standard Protection
+            </h4>
+
+            <p>
+                Suraksha AI will monitor transactions
+                and suspicious messages for common
+                fraud indicators.
+            </p>
+
+            <div class="profile-tip">
+
+                🛡️ <strong>Safety Tip:</strong>
+
+                Never share your OTP, PIN, password or CVV.
+
+            </div>
+
+        `;
 
     }
 
@@ -255,7 +394,7 @@ function checkTransaction() {
     let reasons = [];
 
 
-    /* Count every transaction analysis */
+    /* Count transaction analysis */
 
     transactionsChecked++;
 
@@ -338,7 +477,42 @@ function checkTransaction() {
     }
 
 
-    /* Maximum score = 100 */
+    /* =================================================
+       PROFILE-BASED EXTRA PROTECTION
+       ================================================= */
+
+    if (
+        selectedProtectionProfile === "senior" &&
+        score >= 20
+    ) {
+
+        score += 10;
+
+        reasons.push(
+            "Additional senior-citizen protection applied"
+        );
+
+    }
+
+
+    if (
+        selectedProtectionProfile === "firstTime" &&
+        (
+            newBeneficiary === "yes" ||
+            newDevice === "yes"
+        )
+    ) {
+
+        score += 10;
+
+        reasons.push(
+            "Additional first-time banking protection applied"
+        );
+
+    }
+
+
+    /* Maximum score */
 
     score =
         Math.min(score, 100);
@@ -913,6 +1087,38 @@ function checkScamMessage() {
     );
 
 
+    /* =================================================
+       PROFILE-BASED MESSAGE PROTECTION
+       ================================================= */
+
+    if (
+        selectedProtectionProfile === "senior" &&
+        score >= 20
+    ) {
+
+        score += 10;
+
+        reasons.push(
+            "Additional senior-citizen protection applied"
+        );
+
+    }
+
+
+    if (
+        selectedProtectionProfile === "firstTime" &&
+        score >= 20
+    ) {
+
+        score += 10;
+
+        reasons.push(
+            "Additional first-time banking protection applied"
+        );
+
+    }
+
+
     /* Maximum score */
 
     score =
@@ -1190,114 +1396,6 @@ function enableSafeMode() {
             "🛡️ Simple Safety Mode is OFF"
 
         );
-
-    }
-
-}
-/* =====================================================
-   VULNERABLE USER PROTECTION PROFILE
-   ===================================================== */
-
-function selectProfile(profile) {
-
-    const result = document.getElementById("profileResult");
-
-    if (!result) {
-        return;
-    }
-
-
-    /* =========================================
-       SENIOR CITIZEN
-       ========================================= */
-
-    if (profile === "senior") {
-
-        result.innerHTML = `
-
-            <strong>
-                👴 Senior Citizen Protection
-            </strong>
-
-            <p>
-                Suraksha AI will provide simpler warnings,
-                clearer instructions and stronger verification
-                guidance for unfamiliar transactions.
-            </p>
-
-            <div class="profile-tip">
-
-                🛡️ Safety Tip:
-
-                Never transfer money because someone
-                is pressuring you over a phone call.
-
-            </div>
-
-        `;
-
-    }
-
-
-    /* =========================================
-       FIRST-TIME DIGITAL BANKER
-       ========================================= */
-
-    else if (profile === "firsttime") {
-
-        result.innerHTML = `
-
-            <strong>
-                📱 First-Time Digital Banker Protection
-            </strong>
-
-            <p>
-                Suraksha AI will provide extra guidance
-                when you encounter unfamiliar recipients,
-                devices or digital banking requests.
-            </p>
-
-            <div class="profile-tip">
-
-                🛡️ Safety Tip:
-
-                Always verify a new recipient before
-                sending money.
-
-            </div>
-
-        `;
-
-    }
-
-
-    /* =========================================
-       STANDARD PROTECTION
-       ========================================= */
-
-    else {
-
-        result.innerHTML = `
-
-            <strong>
-                👤 Standard Protection
-            </strong>
-
-            <p>
-                Suraksha AI will monitor transactions
-                and suspicious messages for common
-                fraud indicators.
-            </p>
-
-            <div class="profile-tip">
-
-                🛡️ Safety Tip:
-
-                Never share your OTP, PIN, password or CVV.
-
-            </div>
-
-        `;
 
     }
 
