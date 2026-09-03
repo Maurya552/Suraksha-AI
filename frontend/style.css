@@ -1,0 +1,194 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #172033;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: white;
+    border-bottom: 1px solid #e5e9f0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tagline {
+    color: #667085;
+    font-size: 14px;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.hero {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px 8%;
+    background: white;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: #eaf2ff;
+    color: #2457a6;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 52px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+h1 span {
+    display: block;
+    color: #1769aa;
+}
+
+.description {
+    font-size: 18px;
+    color: #667085;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+button {
+    border: none;
+    padding: 15px 22px;
+    border-radius: 10px;
+    background: #1769aa;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.shield {
+    font-size: 150px;
+    padding: 50px;
+}
+
+.users {
+    padding: 70px 8%;
+    text-align: center;
+}
+
+.users h2 {
+    font-size: 30px;
+    margin-bottom: 35px;
+}
+
+.user-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #e5e9f0;
+    text-align: left;
+}
+
+.icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #667085;
+}
+
+.checker {
+    margin: 20px 8% 70px;
+    padding: 50px;
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.checker h2 {
+    margin-bottom: 10px;
+}
+
+.checker p {
+    color: #667085;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #172033;
+    color: white;
+}
+
+@media (max-width: 800px) {
+
+    header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+
+    .shield {
+        font-size: 90px;
+        padding: 20px;
+    }
+
+    .user-cards {
+        grid-template-columns: 1fr;
+    }
+}
