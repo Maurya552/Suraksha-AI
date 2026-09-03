@@ -311,3 +311,130 @@ footer {
         padding: 30px 20px;
     }
 }
+/* ========================================
+   SURAKSHA AI - PROTECTION DASHBOARD
+   ======================================== */
+
+.checker-intro {
+    margin-bottom: 30px;
+    color: #667085;
+    font-size: 18px;
+}
+
+
+/* Dashboard layout */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 35px 0;
+}
+
+
+/* Individual dashboard cards */
+
+.dashboard-card {
+    background: #ffffff;
+    border: 1px solid #e5e9f0;
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
+}
+
+
+/* Card hover effect */
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+}
+
+
+/* Dashboard icons */
+
+.dashboard-icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+
+/* Card titles */
+
+.dashboard-card h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+
+/* Large numbers */
+
+.dashboard-number {
+    font-size: 42px;
+    font-weight: 700;
+    color: #1769aa;
+    margin: 8px 0;
+}
+
+
+/* Card descriptions */
+
+.dashboard-card p {
+    color: #667085;
+    font-size: 14px;
+    margin: 0;
+}
+
+
+/* Protection status section */
+
+.protection-status {
+    margin-top: 30px;
+    padding: 28px;
+    border-radius: 16px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    text-align: center;
+}
+
+
+.protection-status h3 {
+    margin-bottom: 14px;
+    font-size: 20px;
+}
+
+
+/* Active status badge */
+
+.status-indicator {
+    display: inline-block;
+    padding: 9px 18px;
+    border-radius: 25px;
+    background: #dcfce7;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+
+/* Status description */
+
+.protection-status p {
+    color: #667085;
+    margin: 0;
+}
+
+
+/* Mobile responsive design */
+
+@media (max-width: 800px) {
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        padding: 24px;
+    }
+
+}
