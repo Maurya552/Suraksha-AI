@@ -74,17 +74,19 @@
 
                 <div class="buttons">
 
-                    <button onclick="showTransaction()">
-
+                    <button
+                        type="button"
+                        onclick="showTransaction()"
+                    >
                         💳 Check a Transaction
-
                     </button>
 
 
-                    <button onclick="showScamChecker()">
-
+                    <button
+                        type="button"
+                        onclick="showScamChecker()"
+                    >
                         📩 Check a Suspicious Message
-
                     </button>
 
                 </div>
@@ -93,12 +95,11 @@
                 <!-- SIMPLE SAFETY MODE -->
 
                 <button
+                    type="button"
                     class="safe-mode-button"
                     onclick="enableSafeMode()"
                 >
-
                     👴 Enable Simple Safety Mode
-
                 </button>
 
 
@@ -115,9 +116,7 @@
             <!-- SHIELD -->
 
             <div class="shield">
-
                 🛡️
-
             </div>
 
         </section>
@@ -152,10 +151,8 @@
                     </h3>
 
                     <p>
-
                         Simple warnings and clear guidance
                         against financial scams.
-
                     </p>
 
                 </div>
@@ -174,10 +171,8 @@
                     </h3>
 
                     <p>
-
                         Extra protection when making
                         unfamiliar digital transactions.
-
                     </p>
 
                 </div>
@@ -196,10 +191,8 @@
                     </h3>
 
                     <p>
-
                         Understand suspicious messages
                         before taking action.
-
                     </p>
 
                 </div>
@@ -226,9 +219,7 @@
 
 
             <p class="checker-intro">
-
                 Your intelligent financial safety dashboard
-
             </p>
 
 
@@ -334,17 +325,13 @@
 
 
                 <div class="status-indicator">
-
                     🟢 PROTECTION ACTIVE
-
                 </div>
 
 
                 <p>
-
                     Suraksha AI continuously checks for
                     suspicious transaction and scam indicators.
-
                 </p>
 
             </div>
@@ -354,7 +341,7 @@
 
             <!-- =====================================
                  STEP 11A
-                 VULNERABLE USER PROTECTION PROFILE
+                 PROTECTION PROFILE
                  ===================================== -->
 
             <div class="protection-profile">
@@ -373,7 +360,9 @@
 
 
 
-                <!-- PROFILE OPTIONS -->
+                <!-- =================================
+                     PROFILE BUTTONS
+                     ================================= -->
 
                 <div class="profile-options">
 
@@ -383,11 +372,9 @@
                     <button
                         type="button"
                         class="profile-button"
-                        onclick="selectProfile('senior')"
+                        onclick="selectProtectionProfile('senior')"
                     >
-
                         👴 Senior Citizen
-
                     </button>
 
 
@@ -397,11 +384,9 @@
                     <button
                         type="button"
                         class="profile-button"
-                        onclick="selectProfile('firsttime')"
+                        onclick="selectProtectionProfile('firstTime')"
                     >
-
                         📱 First-Time Digital Banker
-
                     </button>
 
 
@@ -411,28 +396,27 @@
                     <button
                         type="button"
                         class="profile-button"
-                        onclick="selectProfile('standard')"
+                        onclick="selectProtectionProfile('standard')"
                     >
-
                         👤 Standard Protection
-
                     </button>
-
 
                 </div>
 
 
 
 
-                <!-- PROFILE INFORMATION -->
+                <!-- =================================
+                     PROFILE RESULT
+                     ================================= -->
 
                 <div
-                    id="profileResult"
+                    id="profileInfo"
                     class="profile-info"
                 >
 
                     <div class="profile-info-icon">
-                        🛡️
+                        👤
                     </div>
 
 
@@ -442,12 +426,19 @@
 
 
                     <p>
-
                         General financial safety protection
                         for everyday digital banking activity.
-
                     </p>
 
+
+                    <div class="profile-tip">
+
+                        🛡️ <strong>Safety Tip:</strong>
+
+                        Never share your OTP, PIN,
+                        password or CVV.
+
+                    </div>
 
                 </div>
 
@@ -494,10 +485,8 @@
 
 
                             <p>
-
                                 Suraksha AI is ready to analyze
                                 suspicious activity.
-
                             </p>
 
                         </div>
@@ -522,10 +511,8 @@
     <footer>
 
         <p>
-
             🛡️ Suraksha AI — Protecting customers,
             one transaction at a time.
-
         </p>
 
     </footer>
