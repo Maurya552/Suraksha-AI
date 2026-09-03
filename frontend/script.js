@@ -1194,3 +1194,111 @@ function enableSafeMode() {
     }
 
 }
+/* =====================================================
+   VULNERABLE USER PROTECTION PROFILE
+   ===================================================== */
+
+function selectProfile(profile) {
+
+    const result = document.getElementById("profileResult");
+
+    if (!result) {
+        return;
+    }
+
+
+    /* =========================================
+       SENIOR CITIZEN
+       ========================================= */
+
+    if (profile === "senior") {
+
+        result.innerHTML = `
+
+            <strong>
+                👴 Senior Citizen Protection
+            </strong>
+
+            <p>
+                Suraksha AI will provide simpler warnings,
+                clearer instructions and stronger verification
+                guidance for unfamiliar transactions.
+            </p>
+
+            <div class="profile-tip">
+
+                🛡️ Safety Tip:
+
+                Never transfer money because someone
+                is pressuring you over a phone call.
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =========================================
+       FIRST-TIME DIGITAL BANKER
+       ========================================= */
+
+    else if (profile === "firsttime") {
+
+        result.innerHTML = `
+
+            <strong>
+                📱 First-Time Digital Banker Protection
+            </strong>
+
+            <p>
+                Suraksha AI will provide extra guidance
+                when you encounter unfamiliar recipients,
+                devices or digital banking requests.
+            </p>
+
+            <div class="profile-tip">
+
+                🛡️ Safety Tip:
+
+                Always verify a new recipient before
+                sending money.
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =========================================
+       STANDARD PROTECTION
+       ========================================= */
+
+    else {
+
+        result.innerHTML = `
+
+            <strong>
+                👤 Standard Protection
+            </strong>
+
+            <p>
+                Suraksha AI will monitor transactions
+                and suspicious messages for common
+                fraud indicators.
+            </p>
+
+            <div class="profile-tip">
+
+                🛡️ Safety Tip:
+
+                Never share your OTP, PIN, password or CVV.
+
+            </div>
+
+        `;
+
+    }
+
+}
