@@ -876,7 +876,36 @@ function checkScamMessage() {
                 </p>
 
             </div>
+/* =====================================================
+   SIMPLE SAFETY MODE
+   Designed for senior citizens and first-time users
+   ===================================================== */
 
+function enableSafeMode() {
+
+    document.body.classList.toggle("safe-mode");
+
+    const safeModeEnabled =
+        document.body.classList.contains("safe-mode");
+
+
+    if (safeModeEnabled) {
+
+        alert(
+            "👴 Simple Safety Mode is ON\n\n" +
+            "Suraksha AI will now use larger text " +
+            "and simpler safety guidance."
+        );
+
+    } else {
+
+        alert(
+            "🛡️ Simple Safety Mode is OFF"
+        );
+
+    }
+
+}
 
         </div>
 
