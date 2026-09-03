@@ -47,25 +47,19 @@
 
         <section class="hero">
 
-
             <div class="hero-text">
-
 
                 <p class="badge">
                     AI-POWERED FINANCIAL PROTECTION
                 </p>
 
-
                 <h1>
-
                     Stay Safe from
 
                     <span>
                         Digital Financial Fraud
                     </span>
-
                 </h1>
-
 
                 <p class="description">
 
@@ -76,11 +70,9 @@
                 </p>
 
 
-
                 <!-- MAIN ACTION BUTTONS -->
 
                 <div class="buttons">
-
 
                     <button onclick="showTransaction()">
 
@@ -89,16 +81,13 @@
                     </button>
 
 
-
                     <button onclick="showScamChecker()">
 
                         📩 Check a Suspicious Message
 
                     </button>
 
-
                 </div>
-
 
 
                 <!-- SIMPLE SAFETY MODE -->
@@ -120,9 +109,7 @@
 
                 </p>
 
-
             </div>
-
 
 
             <!-- SHIELD -->
@@ -132,7 +119,6 @@
                 🛡️
 
             </div>
-
 
         </section>
 
@@ -145,15 +131,12 @@
 
         <section class="users">
 
-
             <h2>
                 Designed for people who need extra protection
             </h2>
 
 
-
             <div class="user-cards">
-
 
 
                 <!-- SENIOR CITIZENS -->
@@ -178,8 +161,6 @@
                 </div>
 
 
-
-
                 <!-- FIRST-TIME BANKERS -->
 
                 <div class="card">
@@ -200,8 +181,6 @@
                     </p>
 
                 </div>
-
-
 
 
                 <!-- DIGITAL SAFETY -->
@@ -225,9 +204,7 @@
 
                 </div>
 
-
             </div>
-
 
         </section>
 
@@ -243,7 +220,6 @@
             class="checker"
         >
 
-
             <h2>
                 🛡️ Suraksha Protection Center
             </h2>
@@ -258,115 +234,88 @@
 
 
             <!-- =====================================
-                 DASHBOARD CARDS
+                 DASHBOARD
                  ===================================== -->
 
             <div class="dashboard">
-
 
 
                 <!-- TRANSACTIONS CHECKED -->
 
                 <div class="dashboard-card">
 
-
                     <div class="dashboard-icon">
                         💳
                     </div>
-
 
                     <h3>
                         Transactions Checked
                     </h3>
 
-
                     <div
                         class="dashboard-number"
                         id="transactionsChecked"
                     >
-
                         12
-
                     </div>
-
 
                     <p>
                         Protected transactions
                     </p>
 
-
                 </div>
-
-
 
 
                 <!-- SUSPICIOUS ACTIVITY -->
 
                 <div class="dashboard-card">
 
-
                     <div class="dashboard-icon">
                         ⚠️
                     </div>
-
 
                     <h3>
                         Suspicious Activity
                     </h3>
 
-
                     <div
                         class="dashboard-number"
                         id="suspiciousDetected"
                     >
-
                         3
-
                     </div>
-
 
                     <p>
                         Potential threats detected
                     </p>
 
-
                 </div>
-
-
 
 
                 <!-- THREATS BLOCKED -->
 
                 <div class="dashboard-card">
 
-
                     <div class="dashboard-icon">
                         🛑
                     </div>
-
 
                     <h3>
                         Threats Blocked
                     </h3>
 
-
                     <div
                         class="dashboard-number"
                         id="threatsBlocked"
                     >
-
                         1
-
                     </div>
-
 
                     <p>
                         High-risk threats detected
                     </p>
 
-
                 </div>
-
 
             </div>
 
@@ -378,7 +327,6 @@
                  ===================================== -->
 
             <div class="protection-status">
-
 
                 <h3>
                     Current Protection Status
@@ -399,18 +347,17 @@
 
                 </p>
 
-
             </div>
 
 
 
 
             <!-- =====================================
-                 STEP 11A - USER PROTECTION PROFILE
+                 STEP 11A
+                 VULNERABLE USER PROTECTION PROFILE
                  ===================================== -->
 
             <div class="protection-profile">
-
 
                 <h3>
                     👤 Who are we protecting?
@@ -426,7 +373,7 @@
 
 
 
-                <!-- PROFILE BUTTONS -->
+                <!-- PROFILE OPTIONS -->
 
                 <div class="profile-options">
 
@@ -434,8 +381,9 @@
                     <!-- SENIOR CITIZEN -->
 
                     <button
+                        type="button"
                         class="profile-button"
-                        onclick="selectProtectionProfile('senior')"
+                        onclick="selectProfile('senior')"
                     >
 
                         👴 Senior Citizen
@@ -447,8 +395,9 @@
                     <!-- FIRST-TIME DIGITAL BANKER -->
 
                     <button
+                        type="button"
                         class="profile-button"
-                        onclick="selectProtectionProfile('firstTime')"
+                        onclick="selectProfile('firsttime')"
                     >
 
                         📱 First-Time Digital Banker
@@ -460,8 +409,9 @@
                     <!-- STANDARD PROTECTION -->
 
                     <button
+                        type="button"
                         class="profile-button"
-                        onclick="selectProtectionProfile('standard')"
+                        onclick="selectProfile('standard')"
                     >
 
                         👤 Standard Protection
@@ -473,10 +423,11 @@
 
 
 
+
                 <!-- PROFILE INFORMATION -->
 
                 <div
-                    id="profileInfo"
+                    id="profileResult"
                     class="profile-info"
                 >
 
@@ -497,8 +448,8 @@
 
                     </p>
 
-                </div>
 
+                </div>
 
             </div>
 
@@ -510,7 +461,6 @@
                  ===================================== -->
 
             <div class="activity-section">
-
 
                 <h3>
                     🛡️ Recent Protection Activity
@@ -524,9 +474,6 @@
                 </p>
 
 
-
-                <!-- JavaScript will update this list -->
-
                 <div id="activityList">
 
 
@@ -534,14 +481,12 @@
 
                     <div class="activity-item">
 
-
                         <span class="activity-icon">
                             ✅
                         </span>
 
 
                         <div>
-
 
                             <strong>
                                 Transaction monitoring active
@@ -555,21 +500,15 @@
 
                             </p>
 
-
                         </div>
-
 
                     </div>
 
-
                 </div>
-
 
             </div>
 
-
         </section>
-
 
     </main>
 
@@ -582,14 +521,12 @@
 
     <footer>
 
-
         <p>
 
             🛡️ Suraksha AI — Protecting customers,
             one transaction at a time.
 
         </p>
-
 
     </footer>
 
