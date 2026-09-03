@@ -47,58 +47,37 @@
 
         <section class="hero">
 
-
             <div class="hero-text">
-
 
                 <p class="badge">
                     AI-POWERED FINANCIAL PROTECTION
                 </p>
 
-
                 <h1>
-
                     Stay Safe from
-
                     <span>
                         Digital Financial Fraud
                     </span>
-
                 </h1>
 
-
                 <p class="description">
-
                     Suraksha AI helps protect vulnerable
                     banking users from scams, suspicious
                     transactions and social engineering attacks.
-
                 </p>
 
 
-
-                <!-- MAIN ACTION BUTTONS -->
-
                 <div class="buttons">
 
-
                     <button onclick="showTransaction()">
-
                         💳 Check a Transaction
-
                     </button>
-
-
 
                     <button onclick="showScamChecker()">
-
                         📩 Check a Suspicious Message
-
                     </button>
 
-
                 </div>
-
 
 
                 <!-- SIMPLE SAFETY MODE -->
@@ -107,35 +86,24 @@
                     class="safe-mode-button"
                     onclick="enableSafeMode()"
                 >
-
                     👴 Enable Simple Safety Mode
-
                 </button>
 
-
                 <p class="safe-mode-description">
-
                     Designed for senior citizens and
                     first-time digital banking users.
-
                 </p>
 
-
             </div>
-
 
 
             <!-- SHIELD -->
 
             <div class="shield">
-
                 🛡️
-
             </div>
 
-
         </section>
-
 
 
 
@@ -145,15 +113,12 @@
 
         <section class="users">
 
-
             <h2>
                 Designed for people who need extra protection
             </h2>
 
 
-
             <div class="user-cards">
-
 
 
                 <!-- SENIOR CITIZENS -->
@@ -169,15 +134,11 @@
                     </h3>
 
                     <p>
-
                         Simple warnings and clear guidance
                         against financial scams.
-
                     </p>
 
                 </div>
-
-
 
 
                 <!-- FIRST-TIME BANKERS -->
@@ -193,15 +154,11 @@
                     </h3>
 
                     <p>
-
                         Extra protection when making
                         unfamiliar digital transactions.
-
                     </p>
 
                 </div>
-
-
 
 
                 <!-- DIGITAL SAFETY -->
@@ -217,20 +174,15 @@
                     </h3>
 
                     <p>
-
                         Understand suspicious messages
                         before taking action.
-
                     </p>
 
                 </div>
 
-
             </div>
 
-
         </section>
-
 
 
 
@@ -243,133 +195,100 @@
             class="checker"
         >
 
-
             <h2>
                 🛡️ Suraksha Protection Center
             </h2>
 
-
             <p class="checker-intro">
-
                 Your intelligent financial safety dashboard
-
             </p>
 
 
-
             <!-- =====================================
-                 DASHBOARD CARDS
+                 DASHBOARD
                  ===================================== -->
 
             <div class="dashboard">
-
 
 
                 <!-- TRANSACTIONS CHECKED -->
 
                 <div class="dashboard-card">
 
-
                     <div class="dashboard-icon">
                         💳
                     </div>
-
 
                     <h3>
                         Transactions Checked
                     </h3>
 
-
                     <div
                         class="dashboard-number"
                         id="transactionsChecked"
                     >
-
                         12
-
                     </div>
-
 
                     <p>
                         Protected transactions
                     </p>
 
-
                 </div>
-
-
 
 
                 <!-- SUSPICIOUS ACTIVITY -->
 
                 <div class="dashboard-card">
 
-
                     <div class="dashboard-icon">
                         ⚠️
                     </div>
-
 
                     <h3>
                         Suspicious Activity
                     </h3>
 
-
                     <div
                         class="dashboard-number"
                         id="suspiciousDetected"
                     >
-
                         3
-
                     </div>
-
 
                     <p>
                         Potential threats detected
                     </p>
 
-
                 </div>
-
-
 
 
                 <!-- THREATS BLOCKED -->
 
                 <div class="dashboard-card">
 
-
                     <div class="dashboard-icon">
                         🛑
                     </div>
-
 
                     <h3>
                         Threats Blocked
                     </h3>
 
-
                     <div
                         class="dashboard-number"
                         id="threatsBlocked"
                     >
-
                         1
-
                     </div>
-
 
                     <p>
                         High-risk threats detected
                     </p>
 
-
                 </div>
 
-
             </div>
-
 
 
 
@@ -379,29 +298,99 @@
 
             <div class="protection-status">
 
-
                 <h3>
                     Current Protection Status
                 </h3>
 
-
                 <div class="status-indicator">
-
                     🟢 PROTECTION ACTIVE
+                </div>
+
+                <p>
+                    Suraksha AI continuously checks for
+                    suspicious transaction and scam indicators.
+                </p>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 STEP 11A
+                 WHO ARE WE PROTECTING?
+                 ===================================== -->
+
+            <div class="protection-users">
+
+                <h3>
+                    👤 Who are we protecting?
+                </h3>
+
+                <p class="protection-users-intro">
+                    Choose a protection profile for
+                    personalized safety guidance.
+                </p>
+
+
+                <div class="protection-options">
+
+
+                    <!-- SENIOR CITIZEN -->
+
+                    <button
+                        class="protection-option"
+                        onclick="selectProtectionProfile('senior')"
+                    >
+                        👴 Senior Citizen
+                    </button>
+
+
+                    <!-- FIRST-TIME DIGITAL BANKER -->
+
+                    <button
+                        class="protection-option"
+                        onclick="selectProtectionProfile('first-time')"
+                    >
+                        📱 First-Time Digital Banker
+                    </button>
+
+
+                    <!-- STANDARD PROTECTION -->
+
+                    <button
+                        class="protection-option"
+                        onclick="selectProtectionProfile('standard')"
+                    >
+                        👤 Standard Protection
+                    </button>
 
                 </div>
 
 
-                <p>
+                <!-- PROFILE INFORMATION -->
 
-                    Suraksha AI continuously checks for
-                    suspicious transaction and scam indicators.
+                <div
+                    id="protectionInfo"
+                    class="protection-info"
+                >
 
-                </p>
+                    <div class="protection-info-icon">
+                        🛡️
+                    </div>
 
+                    <h4>
+                        Standard Protection
+                    </h4>
+
+                    <p>
+                        Standard Suraksha AI protection is active.
+                        Transactions and suspicious messages can
+                        be checked for common fraud warning signs.
+                    </p>
+
+                </div>
 
             </div>
-
 
 
 
@@ -411,20 +400,14 @@
 
             <div class="activity-section">
 
-
                 <h3>
                     🛡️ Recent Protection Activity
                 </h3>
 
-
                 <p class="activity-intro">
-
                     Suraksha AI monitoring and protection events
-
                 </p>
 
-
-                <!-- JavaScript will update this list -->
 
                 <div id="activityList">
 
@@ -433,36 +416,26 @@
 
                     <div class="activity-item">
 
-
                         <span class="activity-icon">
                             ✅
                         </span>
 
-
                         <div>
-
 
                             <strong>
                                 Transaction monitoring active
                             </strong>
 
-
                             <p>
-
                                 Suraksha AI is ready to analyze
                                 suspicious activity.
-
                             </p>
-
 
                         </div>
 
-
                     </div>
 
-
                 </div>
-
 
             </div>
 
@@ -474,24 +447,18 @@
 
 
 
-
     <!-- =========================================
          FOOTER
          ========================================= -->
 
     <footer>
 
-
         <p>
-
             🛡️ Suraksha AI — Protecting customers,
             one transaction at a time.
-
         </p>
 
-
     </footer>
-
 
 
 
