@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: #f4f7fb;
     color: #172033;
     line-height: 1.6;
@@ -92,9 +92,11 @@ button {
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 button:hover {
+    transform: translateY(-2px);
     opacity: 0.9;
 }
 
@@ -140,20 +142,127 @@ button:hover {
     color: #667085;
 }
 
+/* Safety checker */
+
 .checker {
     margin: 20px 8% 70px;
     padding: 50px;
     background: white;
-    border-radius: 15px;
+    border-radius: 18px;
     text-align: center;
+    border: 1px solid #e5e9f0;
 }
 
 .checker h2 {
+    font-size: 30px;
     margin-bottom: 10px;
 }
 
-.checker p {
+.checker-intro {
     color: #667085;
+    margin-bottom: 30px;
+}
+
+.form-container {
+    max-width: 650px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+.form-container label {
+    display: block;
+    font-weight: bold;
+    margin-top: 18px;
+    margin-bottom: 7px;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccd3df;
+    border-radius: 8px;
+    font-size: 15px;
+    background: white;
+}
+
+.form-container textarea {
+    resize: vertical;
+}
+
+.form-container button {
+    margin-top: 25px;
+    width: 100%;
+}
+
+/* Risk result */
+
+.risk-result {
+    max-width: 650px;
+    margin: 35px auto 0;
+    padding: 30px;
+    border-radius: 15px;
+    background: #f8fafc;
+    border: 2px solid #dce3ec;
+    text-align: center;
+}
+
+.risk-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.risk-result h2 {
+    margin-bottom: 10px;
+}
+
+.risk-score {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.risk-result p {
+    color: #667085;
+    margin: 10px 0;
+}
+
+.risk-result h3 {
+    text-align: left;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.risk-result ul {
+    text-align: left;
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+.risk-result li {
+    margin-bottom: 7px;
+}
+
+.risk-result button {
+    margin: 8px;
+}
+
+.safety-box {
+    margin-top: 25px;
+    padding: 18px;
+    border-radius: 10px;
+    background: #fff7e6;
+    text-align: left;
+}
+
+.safety-box strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.safety-box p {
+    margin: 0;
 }
 
 footer {
@@ -163,16 +272,20 @@ footer {
     color: white;
 }
 
+/* Mobile */
+
 @media (max-width: 800px) {
 
     header {
         flex-direction: column;
         gap: 8px;
+        text-align: center;
     }
 
     .hero {
         flex-direction: column;
         text-align: center;
+        padding-top: 50px;
     }
 
     h1 {
@@ -190,5 +303,11 @@ footer {
 
     .user-cards {
         grid-template-columns: 1fr;
+    }
+
+    .checker {
+        margin-left: 4%;
+        margin-right: 4%;
+        padding: 30px 20px;
     }
 }
